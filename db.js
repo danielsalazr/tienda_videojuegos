@@ -13,11 +13,26 @@ let conection;
 
 conection = dbconf.connect()
 
-const query = `
-CREATE TABLE users (
-    email varchar,
-    firstName varchar,
-    lastName varchar,
-    age int
-);
-`;
+
+
+function list(table) {
+    const Consulta = `
+        select * from videojuegos;
+    `;
+    dbconf.query(Consulta, (err, res) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log('Consulta realizada');
+        console.log(res.rows)
+        dbconf.end();
+        return res.rows
+    });
+
+}
+
+list()
+module.exports = {
+    list,
+};
