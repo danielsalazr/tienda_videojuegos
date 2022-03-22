@@ -1,0 +1,9 @@
+#variables de entorno
+.env
+
+#cache de npn
+.npm
+
+#dependencias
+node_modules/
+
