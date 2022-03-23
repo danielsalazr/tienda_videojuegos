@@ -1,0 +1,38 @@
+Las pruebas fueron realizadas utilizando el software insomnia
+
+-Listado de juegos;  http://localhost:3002/juegos
+	para ver el listado de juegos en pantalla, por favor ingresar la url/juegos  
+
+-compra : http://localhost:3002/compra
+	para realizar una compra cambiar el titulo y la cantidad por las deseadas en el json del post
+	metodo: Post
+	json {
+		"titulo":"Medalla de honor",
+		"cantidad":1
+	}
+-Busqueda por empresa: http://localhost:3002/buquedaempresa?empresa=activision
+	para filtrar por el nombre de la empresa camiar la variable por la empresa deseada
+	metodo: get
+
+-Busqueda: http://localhost:3002/busqueda?titulo=Los sims
+	para filtrar por el titulo del juego cambiar el valor de la variable titulo por el deseado
+	-metodo: get
+
+-Juegos_filtrado: http://localhost:3002/juegos?orden=precio
+	para realizar el filtro cambiar el nombre de la variable orden por el parametro deseado a filtar ej: titulo
+	metodo: get
+
+-Crear juego : http://localhost:3002/crearJuego
+	para crear un juego ingresar en el el json del metodo post las propiedades del nuevo juego
+	{
+	"titulo":"crash bandicoot",
+	"stock": 11,
+		"empresa": "activision",
+		"estreno": "2001-06-28",
+		"plataforma": "ps1",
+		"precio": 3000
+	}
+	metodo:Post
+
+-para ir a la pagina principal acceder por el enlace
+	-http://localhost:3002
