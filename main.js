@@ -8,7 +8,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 //const socket = require('./socket')
 //const router = require('./components/message/network'); // importando router desde components/message/network.js
-//const db = require('./db')
+const db = require('./db')
+const router = express.Router();
 //const router = require('./network/routes');
 
 
@@ -16,16 +17,27 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended : false}));
 //app.use(router); // el router ahora se encuentra en /components/message/network.js 
 
 //socket.connect(server);
 
-router(app); // configuracion del servidor para pasarle las rutas desde network/routes.js
+//router(app); // configuracion del servidor para pasarle las rutas desde network/routes.js
 
 app.use( config.publicRoute, express.static('public')); //Servir archivos estaticos en la carpeta public
+app.get('/',function(req, res) {
+    res.send('Bienvenido a tu tienda online')
+})
+app.get('/juegos', function(req, res) {
+
+    const jk = db.list();
+    jk.then((v) => {
+        console.log(v);
+        res.json(v);
+    })
+})
 
 server.listen(config.api.port, function () {
-    console.log('La aplicacion esta escuchando en '+config.host+':'+config.port)
+    console.log(`La aplicacion esta escuchando en '${config.host}:${config.api.port}`)
 });
