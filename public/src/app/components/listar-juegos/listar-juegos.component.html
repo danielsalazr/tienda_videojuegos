@@ -1,0 +1,37 @@
+<header class="row align-items-center align-self-center">
+        <div class="col-2 fs-2 px-5 text-white">Juegolandia</div>
+</header>
+<div class="container mt-5" >
+    <div class="row" >
+        <div class="col-lg-8 offset-lg-2" >
+           <div class="card" >
+               <div class="card-body text-center" >
+                   <span class="fs-2">Listado de productos</span>
+                   <button routerLink="/crear-producto" class="btn btn-success  float-end"> Nuevo</button>
+                   <table class="table table-striped mt-3">
+                    <thead>
+                      <tr >
+                        <th scope="col">Titulo</th>
+                        <th scope="col">stock</th>
+                        <th scope="col">empresa</th>
+                        <th scope="col">estreno</th>
+                        <th scope="col">plataforma</th>
+                        <th scope="col">precio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let producto of listarProductos">
+                        <td>{{producto.titulo}}</td>
+                        <td>{{producto.stock}}</td>
+                        <td>{{producto.empresa}}</td>
+                        <td>{{producto.estreno}}</td>
+                        <td>{{producto.plataforma}}</td>
+                        <td>{{producto.precio | currency: 'COP $'}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>

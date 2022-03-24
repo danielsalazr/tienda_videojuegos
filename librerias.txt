@@ -1,1 +1,4 @@
 npm install --save pg
+npm install -g @angular/cli
+npm install bootstrap
+npm install ngx-toastr --save

@@ -19,7 +19,8 @@ app.use(bodyParser.json());
 //app.use(router); // el router ahora se encuentra en /components/message/network.js 
 
 
-app.use( config.publicRoute, express.static('public')); //Servir archivos estaticos en la carpeta public
+//app.use( config.publicRoute, express.static('/public'));
+app.use(express.static('public')); //Servir archivos estaticos en la carpeta public
 app.get('/',function(req, res) {
     res.send('Bienvenido a tu tienda online')
 })
@@ -86,7 +87,12 @@ app.post('/crearJuego', function(req, res) {
     //console.log(req.body)
     let insert = db.nuevoTitulo(req.body)
     insert.then(() => {
-        res.send("Juego creado correctamente",200);
+        res.set({
+            'Content-Type': 'text/plain',
+            'Content-Length': '123',
+            'ETag': '12345'
+          })
+        res.status(200).send("Juego creado correctamente");
     }).catch(()=>{
         res.send("Ocurrio un error, es posible que el juego ya exista en la base de datos, revise e intente nuevamente")
     })
